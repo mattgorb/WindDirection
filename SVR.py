@@ -48,18 +48,7 @@ def train_predict(train_test_data, c_,g_, cos=False):
 
 
 def WindDirectionWithDates(train_test_data, test_date, end_date):
-	
-	'''trainSetStartDate=train_test_data.Date_time.values[recordsBack]
-	trainSetEndDate=train_test_data.Date_time.values[recordsBack+trainSet-1]
-	testSetStartDate=train_test_data.Date_time.values[recordsBack+trainSet]
-	testSetEndDate=train_test_data.Date_time.values[-1]
-	print("Train set start date: " +str(trainSetStartDate)[:16])
-	print("Train set end date: " +str(trainSetEndDate)[:16])
-	print("Test set start date: " +str(testSetStartDate)[:16])
-	print("Test set end date: " +str(testSetEndDate)[:16])
-	print("Train set structure: "+str(trainSet)+" rows, " + str(recordsBack) + " columns")
-	print("Test set structure: "+str(testSet)+" rows, " + str(recordsBack) + " columns")
-	'''
+
 	actual_values=train_test_data[(train_test_data['Date_time']>= test_date) & (train_test_data['Date_time']<end_date)].Wa_c_avg.values
 	return np.array(actual_values)
 
@@ -136,10 +125,6 @@ def printResults(weighted,actual, test_date):
 	mae = mean_absolute_error(weighted, actual)
 	mse = mean_squared_error(weighted, actual)
 	rmse = sqrt(mse)
-	'''print('Sine RMSE: %f' % sin_rmse)
-	print('Cosine RMSE: %f' % cos_rmse)
-	print("MAE weighted degree prediction:"+str(mae))
-	print("MSE weighted degree prediction:"+str(mse))'''
 	print(str(test_date)[:16]+" RMSE weighted degree prediction:"+str(rmse))
 	print(str(test_date)[:16]+" MAE weighted degree prediction:"+str(mae))
 	return rmse,mae
@@ -225,8 +210,6 @@ def runOneDay(plot=True,turbine_iter=0,x=0,c=1000,g=.00001 ):
 	weighted=calcWeightedRMSEDegreePredictions(sin_rmse,cos_rmse,radians_sin,radians_cos)
 
 	degrees_rmse=printResults(weighted,actual, test_date)
-	print(actual)
-	print(weighted)
 	
 	actual_p = pd.DataFrame(actual)
 	actual_p.to_csv('actual.csv')
