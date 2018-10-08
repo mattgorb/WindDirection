@@ -122,9 +122,7 @@ def setupTrainTestSets(train_test_data,total,recordsBack, trainSet,cos=False):
 	return trainX_initial, trainY_initial, validationX, validationY, trainX_full, trainY_full, testX,testY, actual
 
 
-'''
-initialize variables
-'''
+
 def dataSetup(test_date):
         testSet=24*6 #test 1 day of values
 
