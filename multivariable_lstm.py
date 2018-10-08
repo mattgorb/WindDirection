@@ -128,15 +128,6 @@ def setupTrainTestSets(train_test_data,total,recordsBack, trainSet,cos=False):
 	testY=wind_direction_actual[trainSet:]
 	actual=np.array(actual[trainSet:])
 
-	
-	'''testX = np.reshape(testX, (testX.shape[0], testX.shape[1],1))
-	trainX_initial=np.reshape(trainX_initial, (trainX_initial.shape[0], trainX_initial.shape[1],1))
-	trainX_full=np.reshape(trainX_full, (trainX_full.shape[0], trainX_full.shape[1],1))
-	validationX=np.reshape(validationX, (validationX.shape[0], validationX.shape[1],1))'''
-
-	print(testX.shape)
-	#sys.exit()
-	
 
 	return trainX_initial, trainY_initial, validationX, validationY, trainX_full, trainY_full, testX,testY, actual
 
